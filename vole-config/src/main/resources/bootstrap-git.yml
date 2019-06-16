@@ -5,13 +5,15 @@ spring:
   application:
     name: vole-config-server
   profiles:
-    active: dev
+    active: git
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/gavenwangcn/springcloudconfig.git
+          uri: http://zyd.synology.me:8010/wangyaoduan/springcloudconfig.git
           search-paths: respo
+          username: wangyaoduan
+          password: HeWan0519
 
 eureka:
   instance:
@@ -20,5 +22,5 @@ eureka:
     lease-expiration-duration-in-seconds: 20
   client:
     serviceUrl:
-      defaultZone: http://localhost:1025/eureka
+      defaultZone: http://vole-eureka-node1:1026/eureka,http://vole-eureka-node2:1027/eureka
     registry-fetch-interval-seconds: 10

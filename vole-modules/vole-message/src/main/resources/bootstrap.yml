@@ -26,6 +26,7 @@ eureka:
 
 ---
 spring:
+  rabbitmq:
   profiles: prd
 eureka:
   instance:

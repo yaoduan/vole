@@ -4,27 +4,27 @@ spring:
   security:
     user:
       name: admin
-      password: admin
+      password: 0okm(IJN
 
 #>>>>>>>>>>>>邮件报警（微服务up or down时）
 # qq 邮箱需要 开启smtp 服务
-#  mail:
-##  私人邮箱测试，企业邮箱和私人邮箱配置不同
-#    host: smtp.qq.com
-##   登录账号
-#    username: 61444803@qq.com
-##    开启IMAP/SMTP服务颁发的授权码
-#    password: a19996479o
-#    port: 465
-#    properties:
-#      mail.debug: false
-#      #安全认证(默认是true)
-#      mail.smtp.auth: true
-#      #465或587
-#      mail.smtp.port: 465
-#      #开启ssl加密 否则项目启动时报530error
-#      mail.smtp.ssl.enable: true
-#      mail.smtp.ssl.socketFactory: sf
+  mail:
+#  私人邮箱测试，企业邮箱和私人邮箱配置不同
+    host: smtp.mxhichina.com
+#   登录账号
+    username: yunwei@liangduqi.com
+#    开启IMAP/SMTP服务颁发的授权码
+    password: www.win2.com
+    port: 465
+    properties:
+      mail.debug: false
+      #安全认证(默认是true)
+      mail.smtp.auth: true
+      #465或587
+      mail.smtp.port: 465
+      #开启ssl加密 否则项目启动时报530error
+      mail.smtp.ssl.enable: true
+      mail.smtp.ssl.socketFactory: sf
 #  boot:
 #    mps:
 #      notify:
@@ -46,7 +46,7 @@ eureka:
     # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒
     registryFetchIntervalSeconds: 5
     service-url:
-      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:1025}/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL:http://vole-eureka-node1:1026,http://vole-eureka-node2:1027}/eureka/
   instance:
     # 表示eureka client发送心跳给server端的频率，默认为30秒
     leaseRenewalIntervalInSeconds: 20

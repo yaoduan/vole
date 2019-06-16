@@ -143,15 +143,28 @@
         </plugins>
     </build>
 
-
-    <!-- 使用aliyun镜像 -->
+    <!-- more information at https://blogs.oracle.com/dev2dev/entry/how_to_get_oracle_jdbc -->
     <repositories>
         <repository>
-            <id>aliyun</id>
-            <name>aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <id>maven-oracle</id>
+            <name>maven-oracle</name>
+            <url>http://http://zyd.synology.me:8081/repository/maven-oracle/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
         </repository>
-
+        <repository>
+            <id>maven-public</id>
+            <name>maven-public</name>
+            <url>http://zyd.synology.me:8081/repository/maven-public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+        </repository>
     </repositories>
 
 </project>

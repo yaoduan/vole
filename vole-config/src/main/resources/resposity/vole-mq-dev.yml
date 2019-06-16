@@ -19,10 +19,10 @@ spring:
       buffer-memory: 524288
 
   rabbitmq:
-    host: localhost
+    host: 192.168.1.213
     port: 5672
-    username: guest
-    password: guest
+    username: admin
+    password: admin
 
 zebra:
   rocketmq:
@@ -36,5 +36,4 @@ zebra:
     consumerBatchMaxSize: 1
     consumerBroadcasting: false
     subscribe[0]: TopicTest1:TagA
-    enableHisConsumer: false
     enableHisConsumer: false

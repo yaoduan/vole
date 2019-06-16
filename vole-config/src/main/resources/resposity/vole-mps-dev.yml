@@ -5,8 +5,8 @@ server:
 #  datasource:
 #    driver-class-name: com.mysql.jdbc.Driver
 #    username: root
-#    password: 12345678
-#    url: jdbc:mysql://127.0.0.1:3306/vole?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+#    password: root
+#    url: jdbc:mysql://192.168.1.213:3306/vole?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
 
 #spring:
 #  zipkin:
@@ -42,16 +42,16 @@ sharding:
       type: com.zaxxer.hikari.HikariDataSource
       driver-class-name: com.mysql.jdbc.Driver
       username: root
-      password: 12345678
-      jdbc-url: jdbc:mysql://127.0.0.1:3306/vole?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
+      password: root
+      jdbc-url: jdbc:mysql://192.168.1.213:3306/vole?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
     datasource:
       names: ds
       ds:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.jdbc.Driver
         username: root
-        password: 12345678
-        jdbc-url: jdbc:mysql://127.0.0.1:3306/vole?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
+        password: root
+        jdbc-url: jdbc:mysql://192.168.1.213:3306/vole?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
     config:
       sharding:
         tables:
@@ -74,7 +74,7 @@ sharding:
             table-strategy:
               inline:
                 sharding-column: id
-                algorithm-expression: member_role_${id % 2}
+                algorithm-expression: role_${id % 2}
             key-generator-column-name: id
 
 #mybaits-plus配置，修改主键类型，mapper.xml、type 别名等

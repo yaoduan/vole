@@ -24,6 +24,11 @@
 
 
     <dependencies>
+        <!--监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <!--启用eureka client-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

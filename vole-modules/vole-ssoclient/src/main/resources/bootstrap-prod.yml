@@ -1,8 +1,8 @@
 spring:
   application:
-    name: vole-job
+    name: vole-sso
   profiles:
-    active: dev
+    active: prod
   cloud:
     config:
       fail-fast: true
@@ -11,9 +11,6 @@ spring:
         enabled: true
       profile: ${spring.profiles.active}
 
----
-spring:
-  profiles: dev
 eureka:
   instance:
     prefer-ip-address: true
@@ -21,5 +18,8 @@ eureka:
     lease-expiration-duration-in-seconds: 20
   client:
     serviceUrl:
-      defaultZone: http://localhost:1025/eureka/
-    registry-fetch-interval-seconds: 10
+      defaultZone: http://vole-eureka-node1:1026/eureka/,http://vole-eureka-node2:1027/eureka/
+
+#logging:
+#  level:
+#    org.springframework: debug
