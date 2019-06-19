@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.security.RolesAllowed;
+
 /**
  * 用户中心控制器
  */
@@ -68,8 +70,7 @@ public class MeController extends BaseController {
             return redirectTo("/admin/me/pwd");
         }
         SysUser user = sysUserService.getById(userId);
-        if (!user.getPassword().equals(PasswordEncoderFactories.
-                createDelegatingPasswordEncoder().encode(password))) {
+        if (!user.getPassword().equals(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(password))) {
             redirectAttributes.addFlashAttribute("msg", "旧密码输入错误.");
             return redirectTo("/admin/me/pwd");
         }

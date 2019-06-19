@@ -4,7 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.vole.common.constants.CommonConstant;
+import com.github.vole.common.constants.MqQueueConstant;
 import com.github.vole.common.constants.SecurityConstants;
+import com.github.vole.common.constants.enums.EnumSmsChannelTemplate;
+import com.github.vole.common.fs.sms.MobileMsgTemplate;
 import com.github.vole.common.utils.R;
 import com.github.vole.mps.mapper.MemberMapper;
 import com.github.vole.mps.mapper.MemberRoleMapper;
@@ -22,6 +26,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -30,6 +35,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -41,8 +47,8 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     private RedisTemplate redisTemplate;
     @Resource
     private MemberMapper memberMapper;
-//    @Autowired
-//    private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
     @Resource
     private MemberRoleMapper memberRoleMapper;
 
@@ -172,23 +178,21 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
             return new R<>(false, "手机号不存在");
         }
 
-        String code = RandomStringUtils.random(4);
+        String code = RandomStringUtils.randomNumeric(4);
         JSONObject contextJson = new JSONObject();
         contextJson.put("code", code);
         contextJson.put("product", "Vole4Cloud");
         log.info("短信发送请求消息中心 -> 手机号:{} -> 验证码：{}", mobile, code);
-//        rabbitTemplate.convertAndSend(MqQueueConstant.MOBILE_CODE_QUEUE,
-//                new MobileMsgTemplate(
-//                        mobile,
-//                        contextJson.toJSONString(),
-//                        CommonConstant.ALIYUN_SMS,
-//                        EnumSmsChannelTemplate.LOGIN_NAME_LOGIN.getSignName(),
-//                        EnumSmsChannelTemplate.LOGIN_NAME_LOGIN.getTemplate()
-//                ));
+        rabbitTemplate.convertAndSend(MqQueueConstant.MOBILE_CODE_QUEUE,
+                new MobileMsgTemplate(
+                        mobile,
+                        contextJson.toJSONString(),
+                        CommonConstant.ALIYUN_SMS,
+                        EnumSmsChannelTemplate.LOGIN_NAME_LOGIN.getSignName(),
+                        EnumSmsChannelTemplate.LOGIN_NAME_LOGIN.getTemplate()
+                ));
         redisTemplate.opsForValue().set(SecurityConstants.DEFAULT_CODE_KEY + mobile, code, SecurityConstants.DEFAULT_IMAGE_EXPIRE, TimeUnit.SECONDS);
         return new R<>(true);
     }
-
-
 
 }

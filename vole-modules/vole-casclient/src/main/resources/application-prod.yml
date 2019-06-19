@@ -1,6 +1,3 @@
-server:
-  port: 8998
-
 spring:
   application:
     name: vole-casclient-service
@@ -8,7 +5,7 @@ spring:
 security:
   cas:
     server:
-      host: http://localhost:8080/cas
+      host: http://192.168.1.213:8080/cas
       login: ${security.cas.server.host}/login
       logout: ${security.cas.server.host}/logout
     service:
@@ -24,7 +21,7 @@ eureka:
     health-check-url-path: /actuator/health
   client:
     serviceUrl:
-      defaultZone: http://localhost:1025/eureka/
+      defaultZone: http://vole-eureka-node1:1026/eureka/,http://vole-eureka-node2:1027/eureka/
 management:
   endpoints:
     web:

@@ -11,9 +11,6 @@ spring:
         enabled: true
       profile: ${spring.profiles.active}
 
----
-spring:
-  profiles: dev
 eureka:
   instance:
     prefer-ip-address: true

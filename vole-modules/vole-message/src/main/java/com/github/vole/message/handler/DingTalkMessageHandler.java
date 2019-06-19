@@ -38,7 +38,7 @@ public class DingTalkMessageHandler {
         dingTalkMsgTemplate.setText(textBean);
         HttpFeedback result = null;
         try {
-            result = HttpContacter.p().doPost(webhook,JSONObject.toJSONString(dingTalkMsgTemplate));
+            result = HttpContacter.p().doPost(webhook,JSONObject.toJSONString(dingTalkMsgTemplate),"application/json","utf-8");
         } catch (Exception e) {
             log.error("钉钉发送异常:{}", e.getMessage());
         }

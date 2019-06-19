@@ -4,7 +4,7 @@ spring:
   security:
     user:
       name: admin
-      password: admin
+      password: 0okm(IJN
 
 #>>>>>>>>>>>>邮件报警（微服务up or down时）
 # qq 邮箱需要 开启smtp 服务
@@ -46,7 +46,7 @@ eureka:
     # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒
     registryFetchIntervalSeconds: 5
     service-url:
-      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:1025}/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL:http://vole-eureka-node1:1026,http://vole-eureka-node2:1027}/eureka/
   instance:
     # 表示eureka client发送心跳给server端的频率，默认为30秒
     leaseRenewalIntervalInSeconds: 20

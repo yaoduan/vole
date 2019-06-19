@@ -72,11 +72,8 @@ public class SecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
     @Bean
     PasswordEncoder passwordEncoder(){
-        DelegatingPasswordEncoder delegatingPasswordEncoder =
-                (DelegatingPasswordEncoder)  PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        DelegatingPasswordEncoder delegatingPasswordEncoder = (DelegatingPasswordEncoder)  PasswordEncoderFactories.createDelegatingPasswordEncoder();
         return delegatingPasswordEncoder;
-
-
     }
 
 }

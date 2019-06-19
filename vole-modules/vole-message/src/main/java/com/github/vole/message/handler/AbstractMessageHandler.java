@@ -1,7 +1,7 @@
 package com.github.vole.message.handler;
 
 
-import com.github.vole.message.template.MobileMsgTemplate;
+import com.github.vole.common.fs.sms.MobileMsgTemplate;
 
 /**
  * 抽象hander

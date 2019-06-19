@@ -1,8 +1,8 @@
 spring:
   application:
-    name: vole-auth
+    name: vole-message-service
   profiles:
-    active: dev
+    active: prod
   cloud:
     config:
       fail-fast: true
@@ -17,10 +17,6 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 20
   client:
-    service-url:
-      defaultZone:  http://localhost:1025/eureka/
-
-#开启debug信息
-#logging:
-#  level:
-#    org.springframework: DEBUG
+    serviceUrl:
+      defaultZone: http://vole-eureka-node1:1026/eureka/,http://vole-eureka-node2:1027/eureka/
+    registry-fetch-interval-seconds: 10

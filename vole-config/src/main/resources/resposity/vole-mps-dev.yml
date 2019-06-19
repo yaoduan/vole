@@ -1,3 +1,7 @@
+logging:
+  level:
+    org.springframework: DEBUG
+
 server:
   port: 6001
 
@@ -34,6 +38,11 @@ spring:
     template-loader-path: classpath:/templates/
   mvc:
     static-path-pattern: /static/**
+  rabbitmq:
+    host: 192.168.1.213
+    port: 5672
+    username: admin
+    password: admin
 
 # 分库分表支持
 sharding:

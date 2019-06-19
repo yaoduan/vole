@@ -13,12 +13,11 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@RabbitListener(queues = MqQueueConstant.DINGTALK_SERVICE_STATUS_CHANGE)
 public class DingTalkServiceChangeReceiveListener {
     @Autowired
     private DingTalkMessageHandler dingTalkMessageHandler;
 
-    @RabbitHandler
+    @RabbitListener(queues = MqQueueConstant.DINGTALK_SERVICE_STATUS_CHANGE)
     public void receive(String text) {
         long startTime = System.currentTimeMillis();
         log.info("消息中心接收到钉钉发送请求-> 内容：{} ", text);

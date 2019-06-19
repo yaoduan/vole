@@ -11,9 +11,6 @@ spring:
         enabled: true
       profile: ${spring.profiles.active}
 
----
-spring:
-  profiles: dev
 eureka:
   instance:
     prefer-ip-address: true
@@ -23,14 +20,3 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:1025/eureka/
     registry-fetch-interval-seconds: 10
-
----
-spring:
-  rabbitmq:
-  profiles: prd
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:1025/eureka/

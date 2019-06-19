@@ -1,12 +1,23 @@
+logging:
+  level:
+    org.springframework: DEBUG
+
 server:
   port: 4050
 
 sms:
   dingtalk:
-    webhook: https://oapi.dingtalk.com/robot/send?access_token=639c8b9cbe01b2d664e5bfd69c2514ad145fb68da6efd554691eeae7fcb317d8
+    webhook: https://oapi.dingtalk.com/robot/send?access_token=8d9ef9c9e2b9be2b1c6d5406a8f12664e6511ff37d9158230beb6ac982dbf7a8
   aliyun:
-    accessKey: accessKey
-    secretKey: secretKey
+    accessKey: LTAInWSoFHGTF2oU
+    secretKey: oSNbFnYaatQvPZtu0G20wtUZnYSy9M
     channels:
-      loginCodeChannel: SMS_34630023
-      serviceStatusChange: SMS_134310585
+      loginCodeChannel: SMS_6705685
+      serviceStatusChange: SMS_6705680
+
+spring:
+  rabbitmq:
+    host: 192.168.1.213
+    port: 5672
+    username: admin
+    password: admin

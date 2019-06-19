@@ -1,10 +1,9 @@
 package com.github.vole.message.listener;
 
 import com.github.vole.common.constants.MqQueueConstant;
+import com.github.vole.common.fs.sms.MobileMsgTemplate;
 import com.github.vole.message.handler.SmsMessageHandler;
-import com.github.vole.message.template.MobileMsgTemplate;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,13 +15,11 @@ import java.util.Map;
  */
 @Slf4j
 @Component
-@RabbitListener(queues = MqQueueConstant.MOBILE_SERVICE_STATUS_CHANGE)
 public class MobileServiceChangeReceiveListener {
     @Autowired
     private Map<String, SmsMessageHandler> messageHandlerMap;
 
-
-    @RabbitHandler
+    @RabbitListener(queues = MqQueueConstant.MOBILE_SERVICE_STATUS_CHANGE)
     public void receive(MobileMsgTemplate mobileMsgTemplate) {
         long startTime = System.currentTimeMillis();
         log.info("消息中心接收到短信发送请求-> 手机号：{} -> 信息体：{} ", mobileMsgTemplate.getMobile(), mobileMsgTemplate.getContext());

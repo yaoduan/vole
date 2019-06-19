@@ -23,4 +23,4 @@ eureka:
 #开启debug信息
 #logging:
 #  level:
-#    org.springframework: DEBUG
+#    org.springframework: INFO
