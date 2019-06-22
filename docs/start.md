@@ -19,27 +19,30 @@
 
 	3. Zookeeper
 
-            ```
-    192.168.1.213 2181
-            ```
-
+        
+        ```
+        192.168.1.213 2181
+        ```
     
 
-	4. Rabbitmq
-
+	
+4. Rabbitmq
+    
        ```
        192.168.1.213 5672
        admin/admin
        
+       ```
+
    mobile_service_status_change
        mobile_code_queue
    dingtalk_service_status_change
 	   ```
 
-       
-    
-    5. zipkin
 
+​    
+    5. zipkin
+    
        ```
        192.168.1.213 9411
        ```
@@ -49,8 +52,9 @@
        ```
        ./gradlew build install --parallel -x test -x javadoc -x check
        ```
-    
-       
+
+
+​       
 
 ### 启动顺序
 
